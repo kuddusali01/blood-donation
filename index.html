@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>রক্তদান শিবির</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f4f6f9;
+}
+
+.banner img{
+    width:100%;
+    max-height:250px;
+    object-fit:cover;
+}
+
+.container{
+    max-width:500px;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#c62828;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+}
+
+button:hover{
+    background:#a71d1d;
+}
+
+label{
+    font-size:14px;
+}
+</style>
+
+</head>
+<body>
+
+<!-- 🔴 BANNER (https://ibb.co/5XJs3ntk) -->
+<div class="banner">
+<img src="https://ibb.co/5XJs3ntk" alt="Banner">
+</div>
+
+<div class="container">
+
+<h2 style="text-align:center;color:#c62828;">রক্তদাতা নিবন্ধন</h2>
+
+<form id="bloodForm">
+
+<input type="text" name="name" placeholder="নাম" required>
+
+<input type="text" name="address" placeholder="ঠিকানা" required>
+
+<input type="tel" name="phone" placeholder="মোবাইল নম্বর" required>
+
+<select name="bloodgroup" required>
+<option value="">রক্তের গ্রুপ নির্বাচন করুন</option>
+<option>A+</option>
+<option>A-</option>
+<option>B+</option>
+<option>B-</option>
+<option>O+</option>
+<option>O-</option>
+<option>AB+</option>
+<option>AB-</option>
+</select>
+
+<label>
+<input type="checkbox" name="consent" value="Yes" required>
+আমি স্বেচ্ছায় রক্তদান করতে সম্মত।
+</label>
+
+<br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+
+<script>
+document.getElementById('bloodForm')
+.addEventListener('submit', function(e){
+
+e.preventDefault();
+
+fetch('https://script.google.com/macros/s/AKfycbz2BuOImfSbETLI2B5fR55NYB55RknNVm5ZtMOhhNNCgenp8GAaN-NNXz792AGEvsFvuQ/exec', {
+method: 'POST',
+body: new FormData(this)
+})
+.then(() => {
+alert("ধন্যবাদ! আপনার তথ্য সংরক্ষণ করা হয়েছে।");
+this.reset();
+});
+
+});
+</script>
+
+</body>
+</html>
