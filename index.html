@@ -57,9 +57,9 @@ label{
 </head>
 <body>
 
-<!-- 🔴 BANNER <img src="https://i.ibb.co/m5x1dTc4/IMG-20260606-030459.jpg"> -->
+< 🔴 BANNER <img src="https://i.ibb.co/m5x1dTc4/IMG-20260606-030459.jpg"> 
 <div class="banner">
-<img src="https://i.ibb.co/m5x1dTc4/IMG-20260606-030459.jpg">
+<img src="https://i.ibb.co/m5x1dTc4/IMG-20260606-030459.jpg" alt="Banner">
 </div>
 
 <div class="container">
@@ -105,17 +105,18 @@ document.getElementById('bloodForm')
 
 e.preventDefault();
 
-fetch('https://script.google.com/macros/s/AKfycbz2BuOImfSbETLI2B5fR55NYB55RknNVm5ZtMOhhNNCgenp8GAaN-NNXz792AGEvsFvuQ/exec', {
-method: 'POST',
-body: new FormData(this)
-})
-.then(() => {
-alert("ধন্যবাদ! আপনার তথ্য সংরক্ষণ করা হয়েছে।");
-this.reset();
-});
+<script>
+document.getElementById('bloodForm')
+.addEventListener('submit', function(e){
+    e.preventDefault();
 
-});
-</script>
-
-</body>
-</html>
+    fetch('https://script.google.com/macros/s/AKfycbz2BuOImfSbETLI2B5fR55NYB55RknNVm5ZtMOhhNNCgenp8GAaN-NNXz792AGEvsFvuQ/exec', {
+        method: 'POST',
+        body: new FormData(this)
+    })
+    .then(() => {
+        document.querySelector('.container').innerHTML =
+        "<h2 style='color:green;text-align:center;'>✅ Thank You! আপনার তথ্য গ্রহণ করা হয়েছে</h2>";
+    })
+    .catch(() => {
+        alert("❌ সমস্যা হয়েছে, আবার চেষ্টা করুন");
