@@ -96,7 +96,7 @@ label{
 
 <label>
 <input type="checkbox" name="consent" value="Yes" required>
-আমি স্বেচ্ছায় রক্তদান করতে সম্মত।
+আমি স্বেচ্ছায় রক্তদান কর্মসূচিতে অংশগ্রহণ করতে ইচ্ছুক। আমি প্রদত্ত তথ্য সঠিক বলে নিশ্চিত করছি এবং রক্তদানের জন্য আমার সম্মতি প্রদান করছি।
 </label>
 
 <br><br>
@@ -112,7 +112,7 @@ document.getElementById('bloodForm')
 .addEventListener('submit', function(e){
     e.preventDefault();
 
-    fetch('https://script.google.com/macros/s/AKfycbz2BuOImfSbETLI2B5fR55NYB55RknNVm5ZtMOhhNNCgenp8GAaN-NNXz792AGEvsFvuQ/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwzOMvMSAhrNqia9Da3orh0kBRoR5ConTD-vZIGcCWZ3zn1ruZ9E3n7055kUgPKC0eZcQ/exec', {
         method: 'POST',
         body: new FormData(this)
     })
