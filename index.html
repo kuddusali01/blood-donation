@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>রক্তদান শিবির নিবন্ধন</title>
 
 <style>
+
 body{
     margin:0;
     font-family:Arial,sans-serif;
@@ -37,7 +39,7 @@ h2{
 label{
     font-weight:bold;
     display:block;
-    margin-bottom:6px;
+    margin-bottom:8px;
 }
 
 .star{
@@ -52,12 +54,16 @@ input, select{
     border-radius:10px;
     font-size:16px;
     box-sizing:border-box;
+    outline:none;
 }
 
 input:focus,
 select:focus{
-    border:2px solid #c62828;
-    outline:none;
+    border:1px solid #ccc;
+}
+
+.error{
+    border:2px solid red !important;
 }
 
 button{
@@ -73,6 +79,27 @@ button{
 
 button:hover{
     background:#b71c1c;
+}
+
+.checkbox-group{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.checkbox-group input{
+    width:auto;
+    margin-top:5px;
+}
+
+.privacy-text{
+    text-align:center;
+    font-size:14px;
+    color:#666;
+    margin-top:15px;
+    line-height:1.7;
 }
 
 .success-box{
@@ -150,22 +177,28 @@ Phone Number <span class="star">*</span>
 <input
 type="tel"
 name="phone"
+placeholder="10 digit phone number"
 pattern="[0-9]{10}"
 maxlength="10"
-placeholder="10 digit phone number"
 required>
 
 <label>
 Email (Optional)
 </label>
 
-<input type="email" name="email">
+<input
+type="email"
+name="email"
+placeholder="Enter email">
 
 <label>
 Address <span class="star">*</span>
 </label>
 
-<input type="text" name="address" required>
+<input
+type="text"
+name="address"
+required>
 
 <label>
 Blood Group <span class="star">*</span>
@@ -183,16 +216,30 @@ Blood Group <span class="star">*</span>
 <option>AB-</option>
 </select>
 
-<label>
-<input type="checkbox" required>
-আমি স্বেচ্ছায় রক্তদান করতে সম্মত।
+<div class="checkbox-group">
+
+<input
+type="checkbox"
+id="consent"
+required>
+
+<label for="consent">
+
+আমি স্বেচ্ছায় রক্তদান কর্মসূচিতে অংশগ্রহণ করতে ইচ্ছুক এবং মানবিক প্রয়োজনে নিরাপদ রক্তদানের মাধ্যমে অসহায় মানুষের পাশে দাঁড়াতে ও প্রয়োজনে সহযোগিতা করতে সম্মত আছি।
+
 </label>
 
-<br><br>
+</div>
 
 <button type="submit" id="submitBtn">
 Submit
 </button>
+
+<p class="privacy-text">
+
+আপনার দেওয়া তথ্য শুধুমাত্র রক্তদান কর্মসূচি, জরুরি যোগাযোগ এবং প্রয়োজনে রক্তদাতা খোঁজার উদ্দেশ্যে সংরক্ষণ করা হবে। এই তথ্য অন্য কোনো ব্যক্তি বা প্রতিষ্ঠানের কাছে শেয়ার করা হবে না।
+
+</p>
 
 </form>
 
@@ -207,8 +254,10 @@ document.querySelector('select[name="age"]');
 for(let i=18;i<=60;i++){
     let option =
     document.createElement("option");
+
     option.value=i;
     option.text=i;
+
     ageSelect.appendChild(option);
 }
 
@@ -218,6 +267,21 @@ document
 function(e){
 
 e.preventDefault();
+
+// Required field red highlight
+document
+.querySelectorAll(
+'input[required], select[required]'
+)
+.forEach(field => {
+
+if(!field.value){
+field.classList.add('error');
+}else{
+field.classList.remove('error');
+}
+
+});
 
 if(!this.checkValidity()){
 this.reportValidity();
@@ -230,7 +294,7 @@ document.getElementById('submitBtn');
 btn.innerText = "Submitting...";
 btn.disabled = true;
 
-// Duplicate phone check
+// Duplicate phone block
 const phone =
 document.querySelector(
 'input[name="phone"]'
@@ -263,7 +327,8 @@ response.text())
 .then(data => {
 
 localStorage.setItem(
-key, "submitted"
+key,
+"submitted"
 );
 
 document.querySelector(
@@ -281,7 +346,7 @@ THANK YOU
 </div>
 
 <div class="success-text">
-Form has been successfully submitted
+আপনার তথ্য সফলভাবে গ্রহণ করা হয়েছে
 </div>
 
 <button onclick="location.reload()">
@@ -293,7 +358,7 @@ Back Form
 
 })
 
-.catch(error => {
+.catch(() => {
 
 alert(
 "❌ সমস্যা হয়েছে, আবার চেষ্টা করুন"
