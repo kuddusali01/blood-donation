@@ -3,71 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>রক্তদান শিবির নিবন্ধন</title>
 
 <style>
+
 body{
     margin:0;
-    font-family: Arial;
-    background:#f4f6f9;
+    font-family:Arial,sans-serif;
+    background:#f3f4f6;
 }
 
 .banner img{
     width:100%;
-    max-height:250px;
-    object-fit:cover;
     display:block;
 }
 
 .container{
     max-width:600px;
     margin:20px auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    background:#fff;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
 }
 
 h2{
     text-align:center;
-    color:#c62828;
+    color:#b71c1c;
+    margin-bottom:30px;
+}
+
+.field-title{
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.star{
+    color:red;
 }
 
 input, select{
     width:100%;
-    padding:10px;
-    margin:8px 0;
+    padding:14px;
+    margin-bottom:18px;
     border:1px solid #ccc;
-    border-radius:5px;
+    border-radius:10px;
+    font-size:16px;
+    box-sizing:border-box;
+}
+
+input:invalid{
+    border:2px solid red;
 }
 
 button{
     width:100%;
-    padding:12px;
     background:#c62828;
-    color:white;
+    color:#fff;
     border:none;
-    border-radius:5px;
-    font-size:16px;
+    padding:15px;
+    border-radius:10px;
+    font-size:20px;
     cursor:pointer;
 }
 
 button:hover{
-    background:#a71d1d;
+    background:#b71c1c;
 }
 
-label{
-    font-size:14px;
+.consent-box{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin:15px 0;
 }
+
+.consent-box input{
+    width:auto;
+}
+
+.success-box{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.success-circle{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#4CAF50;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:50px;
+}
+
+.success-title{
+    margin-top:20px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.success-text{
+    color:#555;
+    margin-top:10px;
+}
+
 </style>
-
 </head>
 
 <body>
 
-<!-- 🔴 BANNER -->
 <div class="banner">
-    <img src="https://i.ibb.co/b5fqYmKX/IMG-20260606-030459.jpg" alt="Banner">
+<img src="https://i.ibb.co/b5fqYmKX/IMG-20260606-030459.jpg">
 </div>
 
 <div class="container">
@@ -76,11 +127,96 @@ label{
 
 <form id="bloodForm">
 
-<input type="text" name="name" placeholder="নাম" required>
+<div class="field-title">
+নাম <span class="star">*</span>
+</div>
+<input type="text" name="name" required>
 
-<input type="text" name="address" placeholder="ঠিকানা" required>
+<div class="field-title">
+বয়স <span class="star">*</span>
+</div>
 
-<input type="tel" name="phone" placeholder="মোবাইল নম্বর" required>
+<select name="age" required>
+<option value="">বয়স নির্বাচন করুন</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option>21</option>
+<option>22</option>
+<option>23</option>
+<option>24</option>
+<option>25</option>
+<option>26</option>
+<option>27</option>
+<option>28</option>
+<option>29</option>
+<option>30</option>
+<option>31</option>
+<option>32</option>
+<option>33</option>
+<option>34</option>
+<option>35</option>
+<option>36</option>
+<option>37</option>
+<option>38</option>
+<option>39</option>
+<option>40</option>
+<option>41</option>
+<option>42</option>
+<option>43</option>
+<option>44</option>
+<option>45</option>
+<option>46</option>
+<option>47</option>
+<option>48</option>
+<option>49</option>
+<option>50</option>
+<option>51</option>
+<option>52</option>
+<option>53</option>
+<option>54</option>
+<option>55</option>
+<option>56</option>
+<option>57</option>
+<option>58</option>
+<option>59</option>
+<option>60</option>
+</select>
+
+<div class="field-title">
+Gender <span class="star">*</span>
+</div>
+
+<select name="gender" required>
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<div class="field-title">
+Phone Number <span class="star">*</span>
+</div>
+
+<input type="tel"
+name="phone"
+pattern="[0-9]{10,13}"
+required>
+
+<div class="field-title">
+Email (optional)
+</div>
+
+<input type="email" name="email">
+
+<div class="field-title">
+Address
+</div>
+
+<input type="text" name="address">
+
+<div class="field-title">
+Blood Group <span class="star">*</span>
+</div>
 
 <select name="bloodgroup" required>
 <option value="">রক্তের গ্রুপ নির্বাচন করুন</option>
@@ -94,36 +230,77 @@ label{
 <option>AB-</option>
 </select>
 
+<div class="consent-box">
+<input type="checkbox" required>
+
 <label>
-<input type="checkbox" name="consent" value="Yes" required>
-আমি স্বেচ্ছায় রক্তদান কর্মসূচিতে অংশগ্রহণ করতে ইচ্ছুক। আমি প্রদত্ত তথ্য সঠিক বলে নিশ্চিত করছি এবং রক্তদানের জন্য আমার সম্মতি প্রদান করছি।
+আমি স্বেচ্ছায় রক্তদান কর্মসূচিতে অংশগ্রহণ করতে ইচ্ছুক।
 </label>
+</div>
 
-<br><br>
-
-<button type="submit">Submit</button>
+<button type="submit" id="submitBtn">
+Submit
+</button>
 
 </form>
 
 </div>
 
 <script>
+
 document.getElementById('bloodForm')
 .addEventListener('submit', function(e){
-    e.preventDefault();
 
-    fetch('https://script.google.com/macros/s/AKfycbwzOMvMSAhrNqia9Da3orh0kBRoR5ConTD-vZIGcCWZ3zn1ruZ9E3n7055kUgPKC0eZcQ/exec', {
-        method: 'POST',
-        body: new FormData(this)
-    })
-    .then(() => {
-        document.querySelector('.container').innerHTML =
-        "<h2 style='color:green;text-align:center;'>✅ Thank You! আপনার তথ্য গ্রহণ করা হয়েছে</h2>";
-    })
-    .catch(() => {
-        alert("❌ সমস্যা হয়েছে, আবার চেষ্টা করুন");
-    });
+e.preventDefault();
+
+const btn =
+document.getElementById('submitBtn');
+
+btn.innerText = "Submitting...";
+btn.disabled = true;
+
+fetch("YOUR_NEW_SCRIPT_URL_HERE",{
+method:"POST",
+body:new FormData(this)
+})
+
+.then(response => response.text())
+
+.then(data => {
+
+document.querySelector('.container')
+.innerHTML = `
+
+<div class="success-box">
+
+<div class="success-circle">
+✓
+</div>
+
+<div class="success-title">
+THANK YOU
+</div>
+
+<div class="success-text">
+Form has been successfully submitted
+</div>
+
+</div>
+`;
+
+})
+
+.catch(error => {
+
+alert("❌ সমস্যা হয়েছে, আবার চেষ্টা করুন");
+
+btn.innerText = "Submit";
+btn.disabled = false;
+
 });
+
+});
+
 </script>
 
 </body>
